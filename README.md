@@ -1,2 +1,5 @@
 # Simple-go-crud-mongo
-go- mongoDB mgo CRUD
+Implementing CRUD operations with Go and MongoDB
+
+
+

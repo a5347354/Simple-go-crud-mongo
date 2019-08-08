@@ -32,39 +32,40 @@ func main() {
 	movie.ID = bson.NewObjectId()
 	movie.Name = "玩命關頭8"
 	movie.Description = "以街頭賽車和家人朋友之間的羈絆為主題"
-	err := Insert(dbName, collection, movie)
-	if err != nil {
-		log.Fatal(err)
+	err1 := Insert(dbName, collection, movie)
+	if err1 != nil {
+		log.Fatal(err1)
 	}
 
 	//尋找資料 Search Data
 	var result Movies
-	err = FindMovieByName(dbName, collection, bson.M{"name": "玩命關頭9"}, nil, &result)
-	if err != nil {
-		log.Fatal(err)
+	err2 := FindMovieByName(dbName, collection, bson.M{"name": "玩命關頭9"}, nil, &result)
+	if err2 != nil {
+		log.Fatal(err2)
 	}
 	fmt.Println("單筆資料")
 	fmt.Println(result)
 
 	//尋找全部電影資料 Search All Data
 	var resultAllMovie []Movies
-	err = FindAllMovies(dbName, collection, nil, nil, &resultAllMovie)
-	if err != nil {
-		log.Fatal(err)
+	err3 := FindAllMovies(dbName, collection, nil, nil, &resultAllMovie)
+	if err3 != nil {
+		log.Fatal(err3)
 	}
 	fmt.Println("全部資料")
 	fmt.Println(resultAllMovie)
 
 	//修改電影資料 Update Data
-	err = Update(dbName, collection, bson.M{"name": "玩命關頭9"}, bson.M{"$set": bson.M{"name": "9頭關命玩"}})
-	if err != nil {
-		log.Fatal(err)
+	//Be careful
+	err4 := Update(dbName, collection, bson.M{"name": "玩命關頭9"}, bson.M{"$set": bson.M{"name": "9頭關命玩"}})
+	if err4 != nil {
+		log.Fatal(err4)
 	}
 
 	//刪除電影資料 Remove data
-	err = Remove(dbName, collection, bson.M{"name": "玩命關頭9"})
-	if err != nil {
-		log.Fatal(err)
+	err5 := Remove(dbName, collection, bson.M{"name": "玩命關頭9"})
+	if err5 != nil {
+		log.Fatal(err5)
 	}
 }
 
